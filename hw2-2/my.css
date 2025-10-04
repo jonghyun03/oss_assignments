@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {  
+  color: #222;
+  background: #ffffff;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+h1 {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px 10px;
+}
+
+th, tr{
+  background-color: #ffffff;
+}
+
+tr:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+
+th {
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+  color: #35287c;
+  font-weight: 700;
+}
+
+label { display: inline-block; width: 100px; }
+.row { margin: 8px 0; }
+.error { color: #d32f2f; font-size: 0.9em; margin-left: 8px; }
+.actions { margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+
+input[type="text"], input[type="number"], select {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  appearance: none;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.primary { border-color: #1976d2; color: #fff; background: #1976d2; }
+button.danger { border-color: #d32f2f; color: #fff; background: #d32f2f; }
+
+@media (max-width: 600px) {
+  .page { padding: 12px; }
+  h1 { font-size: 18px; }
+
+  label { display: block; width: auto; margin-bottom: 6px; }
+  .row { display: block; }
+  input[type="text"], input[type="number"], select { width: 100%; box-sizing: border-box; }
+
+  .container-fluid .row.g-2.mb-2.ml-2.fw-bold {
+    display: none;
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 {
+    display: block;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    padding: 12px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 .col {
+    display: block;
+    margin-bottom: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 .col:last-child {
+    border-bottom: none;
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 .col:nth-child(1)::before {
+    content: "과목명: ";
+    font-weight: bold;
+    color: #666;
+    display: inline-block;
+    width: 70px;
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 .col:nth-child(2)::before {
+    content: "교수님: ";
+    font-weight: bold;
+    color: #666;
+    display: inline-block;
+    width: 70px;
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 .col:nth-child(3)::before {
+    content: "전공: ";
+    font-weight: bold;
+    color: #666;
+    display: inline-block;
+    width: 70px;
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 .col:nth-child(4)::before {
+    content: "수업교시: ";
+    font-weight: bold;
+    color: #666;
+    display: inline-block;
+    width: 70px;
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 .col:nth-child(5)::before {
+    content: "과목코드: ";
+    font-weight: bold;
+    color: #666;
+    display: inline-block;
+    width: 70px;
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 .col:nth-child(6)::before {
+    content: "학점: ";
+    font-weight: bold;
+    color: #666;
+    display: inline-block;
+    width: 70px;
+  }
+
+  .container-fluid .row.g-2.mb-2.border-bottom.pb-2 .col a {
+    color: #35287c;
+    font-weight: bold;
+  }
+}
+
+@media (min-width: 601px) {
+  .table-scroll { overflow-x: auto; }
+}
+
+

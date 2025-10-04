@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="my.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="page">
+      <h1>한동대학교 AI컴공심화 강의 목록</h1>
+      <div class="actions">
+        <button id="addButton" class="primary" onclick="goToAdd()">추가</button>
+      </div>
+      <br>
+      <div class="container-fluid">
+        <div class="row g-2 mb-2 ml-2 fw-bold">
+          <div class="col">과목명</div>
+          <div class="col">교수님</div>
+          <div class="col">전공</div>
+          <div class="col">수업교시</div>
+          <div class="col">과목코드</div>
+          <div class="col">학점</div>
+        </div>
+        <div id="courseGrid" class="row g-2">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const courses = [
+        { name: "자료구조", professor: "김호준", major: "컴퓨터공학", period: "월3-4", code: "CSE201", credit: 3 },
+        { name: "운영체제", professor: "김인중", major: "컴퓨터공학", period: "수5-6", code: "CSE301", credit: 3 },
+        { name: "데이터베이스", professor: "홍참길", major: "소프트웨어공학", period: "화1-2", code: "SWE210", credit: 3 },
+        { name: "컴퓨터네트워크", professor: "고윤민", major: "컴퓨터공학", period: "목7-8", code: "CSE320", credit: 3 },
+        { name: "AI개론", professor: "안민규", major: "소프트웨어공학", period: "화3-4", code: "SWE230", credit: 3 },
+        { name: "이산수학", professor: "최희열", major: "컴퓨터공학", period: "금1-2", code: "CSE410", credit: 3 },
+        { name: "선형대수학", professor: "조장환", major: "수학", period: "월1-2", code: "MAT201", credit: 3 },
+        { name: "경영경제통계", professor: "오주희", major: "경제학", period: "수3-4", code: "ECON210", credit: 3 },
+        { name: "오픈소스스튜디오", professor: "김세진", major: "소프트웨어공학", period: "목3-4", code: "SWE310", credit: 3 },
+        { name: "모바일앱개발", professor: "조성배", major: "소프트웨어공학", period: "금3-4", code: "SWE340", credit: 3 },
+        { name: "컴퓨터구조", professor: "용환기", major: "컴퓨터공학", period: "화5-6", code: "CSE210", credit: 3 },
+        { name: "캡스톤디자인", professor: "이강", major: "소프트웨어공학", period: "수7-8", code: "SWE450", credit: 3 }
+      ];
+
+      function renderTableRows(items) {
+        const $grid = $("#courseGrid");
+        $grid.empty();
+        items.forEach(function(item) {
+          const $row = $(
+            `<div class="row g-2 mb-2 border-bottom pb-2">
+              <div class="col"><a href="#" onclick="goView(); return false;" class="text-decoration-none">${item.name}</a></div>
+              <div class="col">${item.professor}</div>
+              <div class="col">${item.major}</div>
+              <div class="col">${item.period}</div>
+              <div class="col">${item.code}</div>
+              <div class="col">${item.credit}</div>
+            </div>`
+          );
+          $grid.append($row);
+        });
+      }
+
+      function goToAdd() {
+        window.location.href = "add.html";
+      }
+
+      function goView() {
+        window.location.href = "view.html";
+      }
+      
+      renderTableRows(courses);
+    </script>
+  </body>
+</html>

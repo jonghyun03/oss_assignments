@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/hw2-1",
+      "destination": "/hw2-1/index.html"
+    },
+    {
+      "source": "/hw2-2",
+      "destination": "/hw2-2/index.html"
+    }
+  ]
+}

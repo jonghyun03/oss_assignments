@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>Checkout Form</title>
+    </head>
+    <body>
+        <h1>Checkout form</h1>
+        <p>Below is an example form built entirely with form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        
+        <form>
+            <div>
+                <h3>Billing address</h3>
+                <div>
+                    <label for="firstName">First name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                    
+                    <label for="lastName">Last name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                
+                <label for="email">Email (Optional):</label>
+                <input type="text" id="email" name="email" placeholder="you@example.com">
+                
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" placeholder="1234 Main St" required>
+                
+                <label for="address2">Address 2 (Optional):</label>
+                <input type="text" id="address2" name="address2" placeholder="Apartment or suite">
+                
+                <div>
+                    <label for="country">Country:</label>
+                    <select id="country" name="country" required>
+                        <option value="">Choose...</option>
+                        <optgroup label="North America">
+                            <option value="US">United States</option>
+                            <option value="CA">Canada</option>
+                            <option value="MX">Mexico</option>
+                        </optgroup>
+                        <optgroup label="Asia">
+                            <option value="KR">South Korea</option>
+                            <option value="JP">Japan</option>
+                            <option value="CN">China</option>
+                        </optgroup>
+                    </select>
+                    
+                    <label for="state">State:</label>
+                    <select id="state" name="state" required>
+                        <option value="">Choose...</option>
+                        <option value="CA">California</option>
+                    </select>
+                    
+                    <label for="zip">Zip:</label>
+                    <input type="text" id="zip" name="zip" required>
+                </div>
+                
+                <input type="checkbox" id="sameAddress" name="sameAddress">
+                <label for="sameAddress">Shipping address is the same as my billing address</label>
+                
+                <input type="checkbox" id="saveInfo" name="saveInfo">
+                <label for="saveInfo">Save this information for next time</label>
+            </div>
+            
+            <div>
+                <h3>Payment</h3>
+                
+                <input type="radio" id="creditCard" name="paymentMethod" value="credit" checked>
+                <label for="creditCard">Credit card</label>
+                
+                <input type="radio" id="debitCard" name="paymentMethod" value="debit">
+                <label for="debitCard">Debit card</label>
+                
+                <input type="radio" id="paypal" name="paymentMethod" value="paypal">
+                <label for="paypal">PayPal</label>
+                
+                <div>
+                    <label for="cardName">Name on card:</label>
+                    <input type="text" id="cardName" name="cardName" required>
+                    <small>Full name as displayed on card</small>
+                    
+                    <label for="cardNumber">Credit card number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" required>
+                    
+                    <label for="expiration">Expiration:</label>
+                    <input type="date" id="expiration" name="expiration" required>
+                    
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                
+                    <label for="cardColor">Card Color Preference:</label>
+                </div>
+                <input type="color" id="cardColor" name="cardColor" value="#0066cc">
+            </div>
+            
+            <div>
+                <h3>Additional Information</h3>
+                
+                <label for="deliveryDate">Preferred Delivery Date:</label>
+                <input type="date" id="deliveryDate" name="deliveryDate">
+                
+                <label for="deliveryTime">Delivery Time:</label>
+                <input list="deliveryTimes" id="deliveryTime" name="deliveryTime">
+                <datalist id="deliveryTimes">
+                    <option value="Morning (9AM-12PM)">
+                    <option value="Afternoon (12PM-5PM)">
+                    <option value="Evening (5PM-8PM)">
+                    <option value="Anytime">
+                </datalist>
+                
+                <label for="comments">Special Instructions:</label>
+                <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Any special delivery instructions or comments..."></textarea>
+            </div>
+            
+            <button type="submit">Continue to checkout</button>
+        </form>
+    </body>
+</html>

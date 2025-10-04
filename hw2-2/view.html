@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="my.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="page">
+      <h1>수업 상세</h1>
+      <table>
+        <tbody>
+          <tr><th>과목명</th><td id="v-name"></td></tr>
+          <tr><th>교수님</th><td id="v-professor"></td></tr>
+          <tr><th>전공</th><td id="v-major"></td></tr>
+          <tr><th>수업교시</th><td id="v-period"></td></tr>
+          <tr><th>과목코드</th><td id="v-code"></td></tr>
+          <tr><th>학점</th><td id="v-credit"></td></tr>
+        </tbody>
+      </table>
+
+      <div class="actions">
+        <button class="primary" onclick="goAdd()">추가</button>
+        <button onclick="goEdit()">수정</button>
+        <button class="danger" onclick="onDelete()">삭제</button>
+        <button onclick="goList()">목록</button>
+      </div>
+    </div>
+
+    <script>
+      const record = {
+        name: "자료구조",
+        professor: "김호준",
+        major: "컴퓨터공학",
+        period: "월3-4",
+        code: "CSE201",
+        credit: 3
+      };
+
+      function render() {
+        $("#v-name").text(record.name);
+        $("#v-professor").text(record.professor);
+        $("#v-major").text(record.major);
+        $("#v-period").text(record.period);
+        $("#v-code").text(record.code);
+        $("#v-credit").text(record.credit);
+      }
+
+      function goAdd() { window.location.href = "add.html"; }
+      function goEdit() { window.location.href = "edit.html"; }
+      function goList() { window.location.href = "index.html"; }
+      function onDelete() {
+        if (confirm("게시물을 삭제할까요?")) {
+          alert("삭제되었습니다");
+          window.location.href = "index.html";
+        }
+      }
+
+      render();
+    </script>
+  </body>
+</html>
+
+

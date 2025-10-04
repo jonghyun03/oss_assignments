@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="my.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="page">
+      <h1>수업 수정</h1>
+      <form id="courseForm" class="needs-validation" novalidate>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">과목명</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+          <div class="invalid-feedback">
+            과목명을 입력하세요.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="professor" class="form-label">교수님</label>
+          <input type="text" class="form-control" id="professor" name="professor" required>
+          <div class="invalid-feedback">
+            성함은 최소 2글자 이상입니다
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="major" class="form-label">전공</label>
+          <input type="text" class="form-control" id="major" name="major" required>
+          <div class="invalid-feedback">
+            전공을 입력하세요.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="period" class="form-label">수업교시</label>
+          <input type="text" class="form-control" id="period" name="period" required>
+          <div class="invalid-feedback">
+            형식: 요일+교시 (예: 월3-4)
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="code" class="form-label">과목코드</label>
+          <input type="text" class="form-control" id="code" name="code" maxlength="6" required>
+          <div class="invalid-feedback">
+            형식: 영문대문자 3 + 숫자 3 (예: CSE201)
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="credit" class="form-label">학점</label>
+          <input type="number" class="form-control" id="credit" name="credit" min="1" max="5" step="1" required>
+          <div class="invalid-feedback">
+            학점은 1~5 사이의 정수입니다.
+          </div>
+        </div>
+      </div>
+        <div class="d-flex gap-2 mt-4">
+          <button type="button" class="btn btn-primary" onclick="onConfirm()">확인</button>
+          <button type="button" class="btn btn-secondary" onclick="onCancel()">취소</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const record = {
+        name: "자료구조",
+        professor: "김호준",
+        major: "컴퓨터공학",
+        period: "월3-4",
+        code: "CSE201",
+        credit: 3
+      };
+
+      function fillForm() {
+        $("#name").val(record.name);
+        $("#professor").val(record.professor);
+        $("#major").val(record.major);
+        $("#period").val(record.period);
+        $("#code").val(record.code);
+        $("#credit").val(record.credit);
+      }
+
+      (function() {
+        'use strict';
+        
+        function setCustomValidity() {
+          const periodInput = document.getElementById('period');
+          const codeInput = document.getElementById('code');
+          const creditInput = document.getElementById('credit');
+          const professorInput = document.getElementById('professor');
+          
+          professorInput.addEventListener('input', function() {
+            if (this.value && this.value.length < 2) {
+              this.setCustomValidity('성함은 최소 2글자 이상입니다');
+            } else {
+              this.setCustomValidity('');
+            }
+          });
+          
+          periodInput.addEventListener('input', function() {
+            const periodRe = /^(월|화|수|목|금)\d{1,2}-\d{1,2}$/;
+            if (this.value && !periodRe.test(this.value)) {
+              this.setCustomValidity('형식: 요일+교시 (예: 월3-4)');
+            } else {
+              this.setCustomValidity('');
+            }
+          });
+          
+          codeInput.addEventListener('input', function() {
+            const codeRe = /^[A-Z]{3}\d{3}$/;
+            if (this.value && !codeRe.test(this.value)) {
+              this.setCustomValidity('형식: 영문대문자 3 + 숫자 3 (예: CSE201)');
+            } else {
+              this.setCustomValidity('');
+            }
+          });
+          
+          creditInput.addEventListener('input', function() {
+            const credit = Number(this.value);
+            if (this.value && (!Number.isInteger(credit) || credit < 1 || credit > 5)) {
+              this.setCustomValidity('학점은 1~5 사이의 정수입니다.');
+            } else {
+              this.setCustomValidity('');
+            }
+          });
+        }
+        
+        function initBootstrapValidation() {
+          const form = document.getElementById('courseForm');
+          
+          form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+          setCustomValidity();
+          initBootstrapValidation();
+        });
+      })();
+
+      function onConfirm() {
+        const form = document.getElementById('courseForm');
+        
+        if (form.checkValidity()) {
+          if (confirm("게시물을 수정할까요?")) {
+            alert("수정되었습니다");
+            window.location.href = "view.html";
+          }
+        } else {
+          form.classList.add('was-validated');
+        }
+      }
+
+      function onCancel() {
+        window.location.href = "index.html";
+      }
+
+      fillForm();
+    </script>
+  </body>
+</html>
+
+
